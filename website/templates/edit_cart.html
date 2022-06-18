@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Order Details:</h2>
+<p>Change quantity for orderID : {{cart.id}}</p>
+<form method="POST">
+    <h3 align="center">Edit your cart</h3>
+    <div class="form-group">
+        <label for="product">quantity</label>
+        <input type="number" name="quantity" value="{{cart.quantity}}" min="1" max="{{product.qty}}">
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Edit Product</button>
+</form>
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+
+{% endblock head %}
+
+
+{% block content %}
+
+<br />
+<h3 align="center"> Products </h3>
+<br />
+<div class="card-deck">
+{% for product in products %}
+        <div class="card" style="width: 18; max-width: 270px;">
+            <img src="{{url_for('static',filename='images/'+product.image)}}" class="card-img-top" height="200" alt="default image">
+            <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            <a href="/{{product.name}}/product_details" class="btn btn-primary stretched-link">Buy {{product.name}}</a>
+            </div>
+        </div>
+{% endfor %}
+</div>
+
+{% endblock content %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 align="center">All Orders</h1>
+    <br />
+    <table class="table table-dark">
+        <thead>
+        <tr>
+            <th style="text-align: center;" scope="col">ID</th>
+            <th style="text-align: center;" scope="col">Name</th>
+            <th style="text-align: center;" scope="col">Brand</th>
+            <th style="text-align: center;" scope="col">Price</th>
+            <th style="text-align: center;" scope="col">Category</th>
+            <th style="text-align: center;" scope="col">Quantity</th>
+            <th style="text-align: center;" scope="col">Ordered on</th>
+            <th style="text-align: center;" scope="col">User ID</th>
+            <th style="text-align: center;" scope="col">User Name</th>
+            <th style="text-align: center;" scope="col">Accepted</th>
+            <th style="text-align: center;" scope="col">Dispatched</th>
+            <th style="text-align: center;" scope="col">Delivered</th>
+            <th style="text-align: center;" scope="col">Submit</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for product in orders %}
+            <tr>
+                <td>{{product.order_id}}</td>
+                <td><a href = "/{{product.product_name}}/product_details">{{product.product_name}}</a></td>
+                <td>{{product.brand}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.category_name}}</td>
+                <td>{{product.quantity}}</td>
+                <td>{{product.ordered_on}}</td>
+                <td>{{product.user_id}}</td>
+                <td>{{product.user_name}}</td>
+                <form action="/update_order/{{product.id}}" method="post" >
+                    {% if product.accepted %}
+                    <td><input class="form-check-input" type="checkbox" name="accepted" value="True" id="flexCheckDefault" checked></td>
+                    {% else %}
+                    <td><input class="form-check-input" type="checkbox" name="accepted" value="True" id="flexCheckDefault"></td>
+                    {% endif %}
+                    {% if product.dispatched %}
+                    <td><input class="form-check-input" type="checkbox" name="dispatched" value="True" id="flexCheckDefault" checked></td>
+                    {% else %}
+                    <td><input class="form-check-input" type="checkbox" name="dispatched" value="True" id="flexCheckDefault"></td>
+                    {% endif %}
+                    {% if product.delivered %}
+                    <td><input class="form-check-input" type="checkbox" name="delivered" value="True" id="flexCheckDefault" checked></td>
+                    {% else %}
+                    <td><input class="form-check-input" type="checkbox" name="delivered" value="True" id="flexCheckDefault"></td>
+                    {% endif %}
+                    <td><input type="submit" class="btn btn-primary btn-block" value="Sumbit" /></td>
+                </form>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

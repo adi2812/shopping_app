@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<br />
+<h3 align="center"> Categories </h3>
+<br />
+<div class="card-deck">
+{% for category in categories %}
+        <div class="card" style="width: 18rem; max-width: 270px;">
+            <img src="{{url_for('static',filename='images/'+category.image)}}" class="card-img-top" height="200" alt="default image">
+            <div class="card-body">
+            <h5 class="card-title">{{category.name}}</h5>
+            <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+            <a href="/{{category.name}}/products" class="btn btn-primary stretched-link">Buy {{category.name}}</a>
+            </div>
+        </div>
+{% endfor %}
+</div>
+
+{% endblock content %}

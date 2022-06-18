@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <h3 align="center">Add a Category</h3>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="category" 
+            name="category" 
+            placeholder="Add a category"
+        />
+        <br />
+    <div class="form-group">
+        <label for="formFile" class="form-label">Upload a picture</label>
+        <input class="form-control" type="file" name='image' id="category">
+    </div>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Add Category </button>
+</form>
+
+<br />
+{% if categories %}
+    <h3 align="center">Categories</h3>
+    <ul class="list-group list-group-flush" id="notes"></ul>
+        {% for category in categories %}
+        <li class="list-group-item">{{ category.name}}
+            <button type="button" class="close" onClick="deleteCategory({{ category.id }})">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock content %}
