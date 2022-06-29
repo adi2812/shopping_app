@@ -9,6 +9,6 @@ This is clone for a shooping app.
 The code will run in the localhost
 
 
-To Login as admin plese go to /admin_login.
+To Login as admin please go to /admin_login.
 
 The login as admin and the password that has been set.
